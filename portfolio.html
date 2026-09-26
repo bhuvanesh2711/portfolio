@@ -1,0 +1,3746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhuvanesh R | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --accent: #06b6d4;
+            --dark: #0f172a;
+            --darker: #020617;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --card-bg: #1e293b;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--light);
+            transition: 0.3s;
+        }
+
+        /* High-Tech Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 7.5rem 5% 4rem;
+            background: 
+                radial-gradient(ellipse 70% 50% at 50% -20%, rgba(99, 102, 241, 0.22), transparent 70%),
+                radial-gradient(circle at 90% 25%, rgba(6, 182, 212, 0.14), transparent 50%),
+                radial-gradient(circle at 10% 80%, rgba(139, 92, 246, 0.12), transparent 45%),
+                linear-gradient(rgba(99, 102, 241, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px),
+                var(--darker);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px, auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -20%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(to top, var(--darker), transparent);
+            pointer-events: none;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1.15fr 0.95fr;
+            gap: 3.5rem;
+            align-items: center;
+            max-width: 1280px;
+            width: 100%;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-left {
+            text-align: left;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Tech HUD Status Strip */
+        .hero-status-strip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.35rem 0.9rem;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            border-radius: 30px;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+            margin-bottom: 1.2rem;
+            font-size: 0.8rem;
+            font-family: 'Consolas', monospace;
+            color: #a7f3d0;
+            letter-spacing: 0.5px;
+        }
+
+        .hud-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 10px #10b981;
+            animation: radarBlink 1.8s infinite;
+        }
+
+        @keyframes radarBlink {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.3); }
+        }
+
+        .hud-sep {
+            color: rgba(255, 255, 255, 0.25);
+        }
+
+        .hud-highlight {
+            color: #fbbf24;
+            font-weight: 600;
+        }
+
+        /* Hero Headings */
+        .hero-prefix {
+            font-family: 'Consolas', monospace;
+            font-size: 0.85rem;
+            color: var(--accent);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3.6rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 0.8rem;
+            background: linear-gradient(135deg, #ffffff 10%, #c7d2fe 50%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-role-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 1.25rem;
+            color: #38bdf8;
+            margin-bottom: 1.2rem;
+            min-height: 2rem;
+        }
+
+        .hero-prompt-sym {
+            color: #a855f7;
+            font-weight: bold;
+        }
+
+        .typewriter-cursor {
+            display: inline-block;
+            color: #38bdf8;
+            font-weight: 700;
+            animation: cursorBlink 0.9s infinite;
+        }
+
+        @keyframes cursorBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .hero-bio {
+            font-size: 1.02rem;
+            color: #cbd5e1;
+            line-height: 1.7;
+            margin-bottom: 1.4rem;
+            max-width: 620px;
+        }
+
+        .hero-bio strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* Tech Pills */
+        .hero-tech-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .tech-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.78rem;
+            font-family: 'Consolas', monospace;
+            padding: 0.28rem 0.65rem;
+            border-radius: 6px;
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(99, 102, 241, 0.25);
+            color: #cbd5e1;
+            transition: all 0.25s ease;
+        }
+
+        .tech-pill:hover {
+            border-color: var(--accent);
+            color: #ffffff;
+            transform: translateY(-2px);
+            background: rgba(6, 182, 212, 0.12);
+            box-shadow: 0 4px 12px rgba(6, 182, 212, 0.2);
+        }
+
+        .tech-pill i {
+            font-size: 0.85rem;
+        }
+
+        /* Action Buttons */
+        .hero-buttons {
+            display: flex;
+            gap: 0.9rem;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.75rem 1.6rem;
+            border-radius: 8px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: #ffffff;
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(79, 70, 229, 0.5);
+            background: linear-gradient(135deg, #4338ca, #6d28d9);
+        }
+
+        .btn-tech-outline {
+            background: rgba(15, 23, 42, 0.65);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.45);
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.12);
+        }
+
+        .btn-tech-outline:hover {
+            background: rgba(245, 158, 11, 0.15);
+            border-color: #fbbf24;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.25);
+            color: #ffffff;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #e2e8f0;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Hero Stats HUD Strip */
+        .hero-stats-hud {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.8rem;
+            padding-top: 1.4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .stat-hud-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-hud-val {
+            font-size: 1.35rem;
+            font-weight: 700;
+            font-family: 'Consolas', monospace;
+            background: linear-gradient(135deg, #ffffff, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-hud-label {
+            font-size: 0.72rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 0.1rem;
+        }
+
+        /* Right Column: High-Tech Interactive Terminal */
+        .hero-terminal {
+            background: rgba(11, 15, 25, 0.88);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 35px rgba(99, 102, 241, 0.2);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            animation: fadeInRight 0.9s ease-out;
+            position: relative;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.65rem 1rem;
+            background: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .terminal-controls {
+            display: flex;
+            gap: 7px;
+        }
+
+        .term-dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+        }
+
+        .term-dot.red { background: #ef4444; }
+        .term-dot.yellow { background: #f59e0b; }
+        .term-dot.green { background: #10b981; }
+
+        .terminal-title-bar {
+            font-family: 'Consolas', monospace;
+            font-size: 0.78rem;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .term-branch {
+            color: #a855f7;
+            font-size: 0.72rem;
+            background: rgba(168, 85, 247, 0.12);
+            padding: 0.15rem 0.45rem;
+            border-radius: 4px;
+            border: 1px solid rgba(168, 85, 247, 0.25);
+        }
+
+        /* Terminal Tabs */
+        .terminal-tabs {
+            display: flex;
+            background: rgba(15, 23, 42, 0.6);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 0.25rem 0.6rem 0;
+            gap: 0.35rem;
+            overflow-x: auto;
+        }
+
+        .term-tab {
+            font-family: 'Consolas', monospace;
+            font-size: 0.75rem;
+            color: #64748b;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px 6px 0 0;
+            background: transparent;
+            border: 1px solid transparent;
+            border-bottom: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all 0.2s ease;
+        }
+
+        .term-tab:hover {
+            color: #cbd5e1;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .term-tab.active {
+            color: #38bdf8;
+            background: rgba(11, 15, 25, 0.95);
+            border-color: rgba(99, 102, 241, 0.25);
+            border-top: 2px solid #38bdf8;
+        }
+
+        .terminal-body {
+            padding: 1.2rem 1.4rem;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.83rem;
+            line-height: 1.65;
+            color: #cbd5e1;
+            min-height: 380px;
+            max-height: 480px;
+            overflow-y: auto;
+            text-align: left;
+        }
+
+        .term-pane {
+            display: none;
+        }
+
+        .term-pane.active {
+            display: block;
+            animation: fadeIn 0.25s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Terminal Syntax Highlight Classes */
+        .t-prompt { color: #10b981; font-weight: 600; }
+        .t-cmd { color: #f8fafc; font-weight: 600; }
+        .t-arrow { color: #a855f7; }
+        .t-dim { color: #64748b; }
+        .t-cyan { color: #38bdf8; }
+        .t-amber { color: #fbbf24; }
+        .t-green { color: #34d399; }
+        .t-purple { color: #c084fc; }
+        .t-white { color: #ffffff; }
+
+        .term-block {
+            margin-bottom: 1.1rem;
+        }
+
+        .term-action-row {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 0.6rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed rgba(255, 255, 255, 0.1);
+        }
+
+        .term-inline-btn {
+            font-family: 'Consolas', monospace;
+            font-size: 0.73rem;
+            padding: 0.25rem 0.65rem;
+            border-radius: 4px;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.35);
+            color: #c7d2fe;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            transition: all 0.2s ease;
+        }
+
+        .term-inline-btn:hover {
+            background: rgba(99, 102, 241, 0.3);
+            border-color: #38bdf8;
+            color: #ffffff;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--dark);
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            text-align: left;
+        }
+
+        .about-image {
+            flex: 0 0 auto;
+        }
+
+        .about-image img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+
+        .about-image img:hover {
+            transform: scale(1.04);
+            border-color: var(--accent);
+            box-shadow: 0 15px 35px rgba(6, 182, 212, 0.4);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: var(--darker);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+        }
+
+        .skill-card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-card ul {
+            list-style: none;
+        }
+
+        .skill-card li {
+            padding: 0.5rem 0;
+            color: var(--gray);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skill-card li:last-child {
+            border-bottom: none;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: var(--dark);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+        }
+
+        .project-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .project-card p {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project-tags span {
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* Featured Project Styling */
+        .project-card.featured-project {
+            grid-column: 1 / -1;
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            box-shadow: 0 15px 45px rgba(16, 185, 129, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card.featured-project::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #10b981, #06b6d4, #6366f1);
+        }
+
+        .featured-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .sih-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: #34d399;
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+
+        .project-meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            color: var(--accent);
+            padding: 0.3rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-problem-box {
+            background: rgba(15, 23, 42, 0.7);
+            border-left: 3px solid #f59e0b;
+            padding: 0.9rem 1.2rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+        }
+
+        .project-problem-box strong {
+            color: #fbbf24;
+        }
+
+        .project-highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            padding: 1rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-box:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            background: rgba(30, 41, 59, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .highlight-box i {
+            font-size: 1.4rem;
+            color: var(--accent);
+            margin-top: 0.15rem;
+        }
+
+        .highlight-box h4 {
+            font-size: 0.95rem;
+            color: var(--light);
+            margin-bottom: 0.25rem;
+        }
+
+        .highlight-box p {
+            font-size: 0.82rem;
+            color: var(--gray);
+            margin-bottom: 0;
+            line-height: 1.4;
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .btn-project {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1.3rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-flow {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35);
+        }
+
+        .btn-flow:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+        }
+
+        .btn-demo {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #f87171;
+        }
+
+        .btn-demo:hover {
+            background: #ef4444;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+        }
+
+        .btn-pdf {
+            background: rgba(6, 182, 212, 0.15);
+            border: 1px solid rgba(6, 182, 212, 0.4);
+            color: var(--accent);
+        }
+
+        .btn-pdf:hover {
+            background: var(--accent);
+            color: var(--darker);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
+        }
+
+        /* Flow Modal Styling */
+        .flow-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(2, 6, 23, 0.92);
+            backdrop-filter: blur(12px);
+            z-index: 3100;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .flow-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .flow-modal-content {
+            background: #0f172a;
+            border-radius: 18px;
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 50px rgba(16, 185, 129, 0.15);
+            max-width: 1150px;
+            width: 100%;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            animation: modalScaleIn 0.3s ease forwards;
+        }
+
+        .flow-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 1.8rem;
+            background: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .flow-modal-header h3 {
+            font-size: 1.25rem;
+            color: var(--light);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .flow-modal-body {
+            padding: 1.8rem;
+            overflow-y: auto;
+        }
+
+        .workflow-track {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .track-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .track-farmer {
+            border-color: rgba(52, 211, 153, 0.3);
+        }
+        .track-farmer .track-header {
+            color: #34d399;
+        }
+
+        .track-hub {
+            border-color: rgba(129, 140, 248, 0.3);
+            background: rgba(99, 102, 241, 0.08);
+        }
+        .track-hub .track-header {
+            color: #818cf8;
+        }
+
+        .track-customer {
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+        .track-customer .track-header {
+            color: #38bdf8;
+        }
+
+        /* Bank Challan Modal Tracks */
+        .track-kiosk-user {
+            border-color: rgba(99, 102, 241, 0.35);
+        }
+        .track-kiosk-user .track-header {
+            color: #818cf8;
+        }
+        .track-kiosk-hardware {
+            border-color: rgba(245, 158, 11, 0.35);
+            background: rgba(245, 158, 11, 0.06);
+        }
+        .track-kiosk-hardware .track-header {
+            color: #fbbf24;
+        }
+        .track-bank-teller {
+            border-color: rgba(52, 211, 153, 0.35);
+        }
+        .track-bank-teller .track-header {
+            color: #34d399;
+        }
+
+        /* MyBusStand Modal Tracks */
+        .track-commuter {
+            border-color: rgba(6, 182, 212, 0.35);
+        }
+        .track-commuter .track-header {
+            color: #22d3ee;
+        }
+        .track-bus-engine {
+            border-color: rgba(168, 85, 247, 0.35);
+            background: rgba(168, 85, 247, 0.06);
+        }
+        .track-bus-engine .track-header {
+            color: #c084fc;
+        }
+        .track-depot-ops {
+            border-color: rgba(249, 115, 22, 0.35);
+        }
+        .track-depot-ops .track-header {
+            color: #fb923c;
+        }
+
+        .workflow-steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+            gap: 0.8rem;
+        }
+
+        .workflow-step-node {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 0.9rem;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .workflow-step-node:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.2);
+        }
+
+        .step-num {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 0.3rem;
+            color: var(--accent);
+        }
+
+        .step-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--light);
+            margin-bottom: 0.2rem;
+            line-height: 1.3;
+        }
+
+        .step-desc {
+            font-size: 0.78rem;
+            color: var(--gray);
+            line-height: 1.35;
+        }
+
+        .flow-connector-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin: 1rem 0;
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .flow-connector-bar span {
+            background: rgba(6, 182, 212, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .roadmap-card {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 0.8rem;
+        }
+
+        .roadmap-phase {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 0.2rem;
+        }
+
+        .roadmap-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--light);
+        }
+
+        /* Education Section */
+        .education {
+            background: var(--darker);
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 3rem;
+            position: relative;
+            margin-bottom: 2rem;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: 3rem;
+            margin-left: 50%;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid var(--darker);
+        }
+
+        .timeline-item:nth-child(even)::before {
+            right: auto;
+            left: -8px;
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .timeline-content h3 {
+            color: var(--light);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content .year {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: var(--gray);
+        }
+
+        /* Certifications Section */
+        .certifications {
+            background: var(--dark);
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .cert-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .cert-card i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .cert-card h3 {
+            color: var(--light);
+            font-size: 1rem;
+        }
+
+        .cert-card.clickable {
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .cert-card.clickable:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 12px 30px rgba(6, 182, 212, 0.25);
+        }
+
+        .cert-view-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.75rem;
+            color: var(--accent);
+            margin-top: 0.6rem;
+            padding: 0.2rem 0.6rem;
+            background: rgba(6, 182, 212, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            transition: all 0.3s;
+        }
+
+        .cert-card.clickable:hover .cert-view-badge {
+            background: var(--accent);
+            color: var(--darker);
+            font-weight: 600;
+        }
+
+        /* Certificate Modal / Lightbox */
+        .cert-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(2, 6, 23, 0.88);
+            backdrop-filter: blur(10px);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 1.5rem;
+        }
+
+        .cert-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .cert-modal-content {
+            position: relative;
+            max-width: 850px;
+            width: 100%;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(99, 102, 241, 0.25);
+            overflow: hidden;
+            transform: scale(0.92);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: modalScaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes modalScaleIn {
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .cert-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background: rgba(15, 23, 42, 0.9);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .cert-modal-header h3 {
+            font-size: 1.1rem;
+            color: var(--light);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .cert-modal-header h3 i {
+            color: var(--accent);
+        }
+
+        .cert-modal-close {
+            background: rgba(255, 255, 255, 0.05);
+            border: none;
+            color: var(--gray);
+            font-size: 1.6rem;
+            cursor: pointer;
+            line-height: 1;
+            transition: all 0.2s;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .cert-modal-close:hover {
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.15);
+            transform: rotate(90deg);
+        }
+
+        .cert-modal-body {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #090d16;
+        }
+
+        .cert-modal-body img {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .cert-modal-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.9rem 1.5rem;
+            background: rgba(15, 23, 42, 0.9);
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .cert-modal-footer .verify-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .cert-modal-footer .verify-btn:hover {
+            box-shadow: 0 5px 20px rgba(99, 102, 241, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Resume Modal & Viewer Styles */
+        .resume-modal .resume-modal-content {
+            max-width: 980px;
+            width: 95%;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            background: #0b0f19;
+            border: 1px solid rgba(99, 102, 241, 0.35);
+            box-shadow: 0 25px 65px rgba(0, 0, 0, 0.85), 0 0 45px rgba(99, 102, 241, 0.25);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .resume-modal-body {
+            flex: 1;
+            padding: 0;
+            background: #090d16;
+            overflow: hidden;
+            display: flex;
+            position: relative;
+        }
+
+        .resume-embed-object,
+        .resume-embed-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        .btn-resume-download-head {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.45rem 1.05rem;
+            border-radius: 6px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: #ffffff;
+            font-size: 0.84rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+        }
+
+        .btn-resume-download-head:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(16, 185, 129, 0.45);
+            color: #ffffff;
+        }
+
+        .btn-resume-icon-head {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: var(--light);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-resume-icon-head:hover {
+            background: rgba(255, 255, 255, 0.16);
+            color: var(--accent);
+        }
+
+        .resume-fallback-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 2.5rem;
+            text-align: center;
+            background: #0f172a;
+            color: #ffffff;
+            width: 100%;
+        }
+
+        /* Navbar Resume Pill Button */
+        .nav-resume-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.35rem 0.95rem;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(6, 182, 212, 0.2));
+            border: 1px solid rgba(99, 102, 241, 0.45);
+            color: #38bdf8 !important;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 12px rgba(99, 102, 241, 0.2);
+        }
+
+        .nav-resume-pill:hover {
+            background: linear-gradient(135deg, #4f46e5, #06b6d4);
+            color: #ffffff !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 18px rgba(6, 182, 212, 0.4);
+            border-color: #38bdf8;
+        }
+
+        /* Hero Resume Button */
+        .btn-hero-resume {
+            background: rgba(16, 185, 129, 0.12);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.45);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.15);
+        }
+
+        .btn-hero-resume:hover {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: #ffffff;
+            border-color: #10b981;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Interests & Strengths */
+        .interests {
+            background: var(--darker);
+        }
+
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .interest-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .interest-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .interest-card i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .interest-card h3 {
+            color: var(--light);
+            font-size: 0.9rem;
+        }
+
+        /* Goals Section */
+        .goals {
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            text-align: center;
+        }
+
+        .goals-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .goals-content p {
+            font-size: 1.3rem;
+            color: var(--light);
+            font-style: italic;
+        }
+
+        /* Hobbies Section */
+        .hobbies {
+            background: var(--dark);
+        }
+
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .hobby-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .hobby-card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .hobby-card h3 {
+            color: var(--light);
+            font-size: 1.2rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--darker);
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-link:hover {
+            color: var(--primary);
+        }
+
+        .contact-link i {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .email-container {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .copy-email-btn {
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.4);
+            color: var(--accent);
+            padding: 0.35rem 0.6rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .copy-email-btn:hover {
+            background: var(--primary);
+            color: var(--light);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .copy-toast {
+            position: absolute;
+            top: -30px;
+            right: 0;
+            background: #10b981;
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 4px;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(6px);
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            z-index: 10;
+        }
+
+        .copy-toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        footer p {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .footer-social a {
+            color: var(--gray);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-social a:hover {
+            color: var(--primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2.8rem;
+            }
+            .hero-left {
+                text-align: center;
+            }
+            .hero-prefix, .hero-role-wrapper {
+                justify-content: center;
+            }
+            .hero-bio {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-tech-pills {
+                justify-content: center;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .hero-stats-hud {
+                max-width: 520px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.7rem;
+            }
+
+            .hero-role-wrapper {
+                font-size: 1.05rem;
+            }
+
+            .hero-stats-hud {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.2rem;
+            }
+
+            .terminal-body {
+                font-size: 0.77rem;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 100%;
+                background: var(--dark);
+                flex-direction: column;
+                padding: 2rem;
+                transition: right 0.3s;
+                gap: 1.5rem;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 3rem;
+                padding-right: 0;
+                margin-left: 0;
+            }
+
+            .timeline-item:nth-child(even) {
+                margin-left: 0;
+            }
+
+            .timeline-item::before,
+            .timeline-item:nth-child(even)::before {
+                left: 12px;
+                right: auto;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .certifications-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .interests-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+
+            .hobbies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Bhuvanesh R</div>
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="javascript:void(0)" onclick="openResumeModal()" class="nav-resume-pill"><i class="fas fa-file-pdf"></i> Resume</a></li>
+        </ul>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- High-Tech Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-container">
+            <!-- Left Column: Technical Identity & Telemetry -->
+            <div class="hero-left">
+                <!-- System Status HUD Badge -->
+                <div class="hero-status-strip">
+                    <span class="hud-dot"></span>
+                    <span>SYSTEM ONLINE // DEV_CORE_ACTIVE</span>
+                    <span class="hud-sep">|</span>
+                    <span class="hud-highlight"><i class="fas fa-trophy"></i> SIH 2026 SHORTLISTED</span>
+                </div>
+
+                <div class="hero-prefix">
+                    <i class="fas fa-terminal"></i> // SYS_ENGINEER_PROFILE &bull; CSE '27
+                </div>
+
+                <h1>Bhuvanesh R</h1>
+
+                <div class="hero-role-wrapper">
+                    <span class="hero-prompt-sym">&gt;</span>
+                    <span id="heroTypewriter"></span>
+                    <span class="typewriter-cursor">_</span>
+                </div>
+
+                <p class="hero-bio">
+                    Computer Science Engineer specializing in <strong>production-grade backend architectures</strong>, <strong>relational database schemas (MySQL)</strong>, and <strong>hardware-integrated IoT edge nodes (Raspberry Pi 4)</strong>. Architect of <strong>AGRI BRIDGE</strong> for Smart India Hackathon 2026.
+                </p>
+
+                <!-- Technical Matrix Quick Pills -->
+                <div class="hero-tech-pills">
+                    <span class="tech-pill"><i class="fab fa-python" style="color: #38bdf8;"></i> Python 3.11</span>
+                    <span class="tech-pill"><i class="fas fa-cubes" style="color: #34d399;"></i> Django MVC</span>
+                    <span class="tech-pill"><i class="fas fa-database" style="color: #fbbf24;"></i> MySQL RDBMS</span>
+                    <span class="tech-pill"><i class="fas fa-microchip" style="color: #f43f5e;"></i> Raspberry Pi 4</span>
+                    <span class="tech-pill"><i class="fas fa-network-wired" style="color: #818cf8;"></i> RESTful APIs</span>
+                    <span class="tech-pill"><i class="fas fa-print" style="color: #a7f3d0;"></i> ESC/POS Thermal POS</span>
+                    <span class="tech-pill"><i class="fab fa-aws" style="color: #ff9900;"></i> AWS GenAI</span>
+                </div>
+
+                <!-- Technical Action CTAs -->
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-microchip"></i> Explore Core Projects
+                    </a>
+                    <button type="button" class="btn btn-hero-resume" onclick="openResumeModal()">
+                        <i class="fas fa-file-pdf"></i> View Resume
+                    </button>
+                    <button type="button" class="btn btn-tech-outline" onclick="openCertModal('iic-hackathon-certificate.jpg', 'Smart India Hackathon 2026 &bull; Shortlisted Certificate (AGRI BRIDGE)', '', 'MoE\'s Innovation Cell (IIC) &bull; Adhiparasakthi Engineering College')">
+                        <i class="fas fa-award"></i> SIH 2026 Certificate
+                    </button>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-terminal"></i> Initialize Contact
+                    </a>
+                </div>
+
+                <!-- Live Metrics HUD Strip -->
+                <div class="hero-stats-hud">
+                    <div class="stat-hud-item">
+                        <span class="stat-hud-val">8.04</span>
+                        <span class="stat-hud-label">CGPA (B.E CSE)</span>
+                    </div>
+                    <div class="stat-hud-item">
+                        <span class="stat-hud-val">SIH '26</span>
+                        <span class="stat-hud-label">Shortlisted Finalist</span>
+                    </div>
+                    <div class="stat-hud-item">
+                        <span class="stat-hud-val">3+</span>
+                        <span class="stat-hud-label">Core Systems</span>
+                    </div>
+                    <div class="stat-hud-item">
+                        <span class="stat-hud-val">4</span>
+                        <span class="stat-hud-label">Industry Certs</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Interactive Developer Command Terminal -->
+            <div class="hero-right">
+                <div class="hero-terminal">
+                    <!-- Terminal Top Header -->
+                    <div class="terminal-header">
+                        <div class="terminal-controls">
+                            <span class="term-dot red"></span>
+                            <span class="term-dot yellow"></span>
+                            <span class="term-dot green"></span>
+                        </div>
+                        <div class="terminal-title-bar">
+                            <i class="fas fa-server" style="color: var(--accent); font-size: 0.75rem;"></i>
+                            <span>bhuvanesh@station:~</span>
+                            <span class="term-branch"><i class="fas fa-code-branch"></i> main</span>
+                        </div>
+                        <div style="font-size: 0.72rem; color: #10b981; font-family: 'Consolas', monospace;">
+                            <i class="fas fa-circle" style="font-size: 0.5rem; vertical-align: 1px;"></i> 200 OK
+                        </div>
+                    </div>
+
+                    <!-- Terminal Tab Controls -->
+                    <div class="terminal-tabs">
+                        <button type="button" id="tab-btn-session" class="term-tab active" onclick="switchTerminalTab('session')">
+                            <i class="fas fa-terminal" style="color: #38bdf8;"></i> live_session.sh
+                        </button>
+                        <button type="button" id="tab-btn-stack" class="term-tab" onclick="switchTerminalTab('stack')">
+                            <i class="fas fa-code" style="color: #fbbf24;"></i> architecture.json
+                        </button>
+                        <button type="button" id="tab-btn-telemetry" class="term-tab" onclick="switchTerminalTab('telemetry')">
+                            <i class="fas fa-wave-square" style="color: #34d399;"></i> edge_telemetry.log
+                        </button>
+                    </div>
+
+                    <!-- Terminal Body Content -->
+                    <div class="terminal-body">
+                        <!-- Tab 1: Live Shell Session -->
+                        <div id="term-pane-session" class="term-pane active">
+                            <div class="term-block">
+                                <span class="t-prompt">$</span> <span class="t-cmd">whoami --specifications</span><br>
+                                <span class="t-dim">├─</span> <span class="t-cyan">Engineer:</span> <span class="t-white">Bhuvanesh R</span> [B.E CSE, 2023–2027]<br>
+                                <span class="t-dim">├─</span> <span class="t-cyan">Campus:</span> Adhiparasakthi Engineering College (CGPA: 8.04)<br>
+                                <span class="t-dim">└─</span> <span class="t-cyan">Specialization:</span> Backend Systems &bull; Relational DBs &bull; Edge IoT
+                            </div>
+
+                            <div class="term-block">
+                                <span class="t-prompt">$</span> <span class="t-cmd">systemctl status edge-services --all</span><br>
+                                <span class="t-green">●</span> <span class="t-amber">agri-bridge.service</span>      - <span class="t-green">[RUNNING]</span> SIH 2026 Direct Marketplace<br>
+                                <span class="t-green">●</span> <span class="t-amber">challan-kiosk.service</span>    - <span class="t-green">[RUNNING]</span> RPi 4 Thermal POS + Touch UI<br>
+                                <span class="t-green">●</span> <span class="t-amber">transit-dispatch.service</span> - <span class="t-green">[RUNNING]</span> Live LED Depot Feed &amp; API
+                            </div>
+
+                            <div class="term-block">
+                                <span class="t-prompt">$</span> <span class="t-cmd">git log -1 --pretty=format:"%h - %s"</span><br>
+                                <span class="t-purple">a8f9c2d</span> - <span class="t-white">feat(sih26):</span> Shortlisted for SIH 2026 Internal Hackathon (PS ID: SIH26033)
+                            </div>
+
+                            <div class="term-block">
+                                <span class="t-prompt">$</span> <span class="t-cmd">./run_diagnostics.sh</span><br>
+                                <div id="termDiagOutput" style="margin-top: 0.25rem;">
+                                    <span class="t-green">✓ Django Core Engine: Production-Ready</span><br>
+                                    <span class="t-green">✓ MySQL Database Schema: ACID Compliant</span><br>
+                                    <span class="t-green">✓ Raspberry Pi 4 GPIO &amp; Thermal POS: Verified</span>
+                                </div>
+                                <div class="term-action-row">
+                                    <button type="button" class="term-inline-btn" onclick="runTerminalDiag()"><i class="fas fa-play" style="color: #fbbf24;"></i> Re-Run Diagnostics</button>
+                                    <button type="button" class="term-inline-btn" onclick="openResumeModal()"><i class="fas fa-file-pdf" style="color: #ef4444;"></i> View Resume</button>
+                                    <button type="button" class="term-inline-btn" onclick="openCertModal('iic-hackathon-certificate.jpg', 'Smart India Hackathon 2026 &bull; Shortlisted Certificate (AGRI BRIDGE)', '', 'MoE\'s Innovation Cell (IIC) &bull; Adhiparasakthi Engineering College')"><i class="fas fa-award" style="color: #fbbf24;"></i> SIH Certificate</button>
+                                    <button type="button" class="term-inline-btn" onclick="openAgriFlowModal()"><i class="fas fa-diagram-project" style="color: #38bdf8;"></i> Architecture Flow</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 2: architecture.json -->
+                        <div id="term-pane-stack" class="term-pane">
+                            <pre style="margin: 0; font-family: inherit; font-size: inherit; color: inherit; white-space: pre-wrap;">{
+  <span class="t-purple">"developer"</span>: <span class="t-white">"Bhuvanesh R"</span>,
+  <span class="t-purple">"academics"</span>: {
+    <span class="t-purple">"degree"</span>: <span class="t-white">"B.E. Computer Science and Engineering"</span>,
+    <span class="t-purple">"period"</span>: <span class="t-white">"2023 - 2027"</span>,
+    <span class="t-purple">"cgpa"</span>: <span class="t-amber">8.04</span>
+  },
+  <span class="t-purple">"hackathon"</span>: {
+    <span class="t-purple">"title"</span>: <span class="t-green">"Smart India Hackathon 2026"</span>,
+    <span class="t-purple">"result"</span>: <span class="t-green">"Internal Hackathon Shortlisted"</span>,
+    <span class="t-purple">"problem_statement"</span>: <span class="t-white">"SIH26033: Agri Direct Marketplace"</span>,
+    <span class="t-purple">"team"</span>: <span class="t-white">"Infinite Matrix (128974)"</span>
+  },
+  <span class="t-purple">"core_stack"</span>: {
+    <span class="t-purple">"backend"</span>: [<span class="t-cyan">"Python"</span>, <span class="t-cyan">"Django"</span>, <span class="t-cyan">"REST APIs"</span>],
+    <span class="t-purple">"database"</span>: [<span class="t-cyan">"MySQL (Relational ACID)"</span>],
+    <span class="t-purple">"embedded_iot"</span>: [<span class="t-cyan">"Raspberry Pi 4"</span>, <span class="t-cyan">"ESC/POS Thermal"</span>, <span class="t-cyan">"STT"</span>]
+  },
+  <span class="t-purple">"certifications"</span>: [
+    <span class="t-white">"MoE Innovation Cell - SIH 2026"</span>,
+    <span class="t-white">"AWS Academy - Generative AI Foundations"</span>,
+    <span class="t-white">"IBM SkillsBuild - Artificial Intelligence"</span>,
+    <span class="t-white">"Microsoft &amp; EY - AI Skills Passport"</span>
+  ]
+}</pre>
+                        </div>
+
+                        <!-- Tab 3: edge_telemetry.log -->
+                        <div id="term-pane-telemetry" class="term-pane">
+                            <div class="term-block" style="font-size: 0.78rem;">
+                                <span class="t-dim">[20:30:14]</span> <span class="t-green">[INFO]</span> <span class="t-cyan">django.engine:</span> WSGI runtime initialized with ASGI async channels enabled.<br>
+                                <span class="t-dim">[20:30:15]</span> <span class="t-green">[INFO]</span> <span class="t-cyan">db.mysql:</span> Connection pool established: 12 active connections pool.<br>
+                                <span class="t-dim">[20:30:16]</span> <span class="t-green">[INFO]</span> <span class="t-cyan">rpi4.gpio:</span> ESC/POS 58mm Thermal printer serial link status: <strong>READY</strong>.<br>
+                                <span class="t-dim">[20:30:18]</span> <span class="t-amber">[NOTICE]</span> <span class="t-cyan">sih.agri_bridge:</span> Direct farm-to-door escrow contract pipeline nominal.<br>
+                                <span class="t-dim">[20:30:20]</span> <span class="t-green">[SUCCESS]</span> <span class="t-cyan">system.audit:</span> 0 fatal errors, 100% test pass on token authentication.<br>
+                                <span class="t-dim">[20:30:22]</span> <span class="t-purple">[STATUS]</span> <span class="t-white">System operational. Ready for high-impact software engineering roles.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="profile.jpg" alt="Bhuvanesh R">
+                <div class="about-badge-card" style="margin-top: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; text-align: center;">
+                    <span style="display: inline-block; padding: 0.35rem 0.8rem; background: rgba(99, 102, 241, 0.15); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 20px; font-size: 0.8rem; color: #818cf8; font-weight: 600;">
+                        <i class="fas fa-graduation-cap"></i> B.E. CSE &bull; 2023–2027
+                    </span>
+                    <span style="display: inline-block; padding: 0.35rem 0.8rem; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 20px; font-size: 0.8rem; color: #34d399; font-weight: 600;">
+                        <i class="fas fa-chart-line"></i> CGPA: 8.04 / 10.0
+                    </span>
+                </div>
+            </div>
+            <div class="about-text">
+                <p style="font-size: 1.15rem; color: var(--light); font-weight: 500; line-height: 1.7; margin-bottom: 0.8rem;">
+                    I am a <strong>Computer Science Engineer</strong> and <strong>Full-Stack &amp; Embedded Systems Developer</strong> specializing in backend architecture, physical-computing automation, and applied AI systems.
+                </p>
+                <p style="color: #cbd5e1; font-size: 0.96rem; line-height: 1.7; margin-bottom: 1.2rem;">
+                    My technical expertise focuses on building production-ready applications with <strong>Python &amp; Django</strong>, designing normalized <strong>MySQL relational databases</strong>, and developing edge hardware prototypes with <strong>Raspberry Pi 4</strong>. As a <strong>Smart India Hackathon 2026</strong> developer (Team Infinite Matrix), I architect scalable technical pipelines that bridge software intelligence with real-world infrastructure.
+                </p>
+
+                <!-- Technical Competencies Grid -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.85rem; margin-bottom: 1.3rem;">
+                    <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(99, 102, 241, 0.25); border-radius: 10px; padding: 0.85rem;">
+                        <div style="color: #818cf8; font-weight: 700; font-size: 0.85rem; margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.4rem;">
+                            <i class="fas fa-server"></i> Full-Stack &amp; Backend
+                        </div>
+                        <div style="color: #94a3b8; font-size: 0.8rem; line-height: 1.45;">
+                            Django MVC, RESTful APIs, Session Auth, MySQL Relational Schemas, JavaScript (ES6+).
+                        </div>
+                    </div>
+                    <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 10px; padding: 0.85rem;">
+                        <div style="color: #fbbf24; font-weight: 700; font-size: 0.85rem; margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.4rem;">
+                            <i class="fas fa-microchip"></i> IoT &amp; Embedded Edge
+                        </div>
+                        <div style="color: #94a3b8; font-size: 0.8rem; line-height: 1.45;">
+                            Raspberry Pi 4, Arduino, ESC/POS Thermal Printing, Optical Barcode Scanners, Speech STT.
+                        </div>
+                    </div>
+                    <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(6, 182, 212, 0.25); border-radius: 10px; padding: 0.85rem;">
+                        <div style="color: #22d3ee; font-weight: 700; font-size: 0.85rem; margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.4rem;">
+                            <i class="fas fa-brain"></i> Applied AI &amp; Cloud
+                        </div>
+                        <div style="color: #94a3b8; font-size: 0.8rem; line-height: 1.45;">
+                            AWS Generative AI Foundations, IBM SkillsBuild AI, Microsoft &amp; EY AI Passport.
+                        </div>
+                    </div>
+                    <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(52, 211, 153, 0.25); border-radius: 10px; padding: 0.85rem;">
+                        <div style="color: #34d399; font-weight: 700; font-size: 0.85rem; margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.4rem;">
+                            <i class="fas fa-code-branch"></i> Engineering Practices
+                        </div>
+                        <div style="color: #94a3b8; font-size: 0.8rem; line-height: 1.45;">
+                            Git/GitHub CI Workflows, Modular Component Architecture, Database Optimization.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Skills Strip -->
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                    <span style="font-size: 0.75rem; padding: 0.25rem 0.65rem; background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 15px; color: #a5b4fc;"><i class="fab fa-python"></i> Python Architecture</span>
+                    <span style="font-size: 0.75rem; padding: 0.25rem 0.65rem; background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3); border-radius: 15px; color: #67e8f9;"><i class="fas fa-database"></i> MySQL Relational Modeling</span>
+                    <span style="font-size: 0.75rem; padding: 0.25rem 0.65rem; background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 15px; color: #fde047;"><i class="fas fa-microchip"></i> Embedded Linux / RPi</span>
+                    <span style="font-size: 0.75rem; padding: 0.25rem 0.65rem; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 15px; color: #86efac;"><i class="fas fa-trophy"></i> SIH 2026 Developer</span>
+                </div>
+
+                <div style="margin-top: 1.5rem; display: flex; gap: 0.8rem; flex-wrap: wrap;">
+                    <button type="button" class="btn btn-primary" onclick="openResumeModal()">
+                        <i class="fas fa-file-pdf"></i> View &amp; Download Resume
+                    </button>
+                    <a href="Bhuvanesh_R_Resume.pdf" download="Bhuvanesh_R_Resume.pdf" class="btn btn-secondary">
+                        <i class="fas fa-download"></i> Direct Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3><i class="fas fa-code"></i> Programming</h3>
+                <ul>
+                    <li>Python</li>
+                    <li>JavaScript</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3><i class="fas fa-globe"></i> Web Development</h3>
+                <ul>
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3><i class="fas fa-server"></i> Backend</h3>
+                <ul>
+                    <li>Django</li>
+                    <li>REST APIs</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3><i class="fas fa-database"></i> Database</h3>
+                <ul>
+                    <li>MySQL</li>
+                    <li>Database Design</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3><i class="fas fa-microchip"></i> IoT & Hardware</h3>
+                <ul>
+                    <li>Raspberry Pi</li>
+                    <li>Arduino</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3><i class="fas fa-tools"></i> Tools</h3>
+                <ul>
+                    <li>GitHub</li>
+                    <li>VS Code</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+            <!-- Featured Project: AGRI BRIDGE (SIH 2026) -->
+            <div class="project-card featured-project">
+                <div class="featured-header">
+                    <div>
+                        <span class="sih-badge"><i class="fas fa-trophy"></i> Smart India Hackathon 2026</span>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <span class="project-meta-pill"><i class="fas fa-users"></i> Team: Infinite Matrix (128974)</span>
+                        <span class="project-meta-pill"><i class="fas fa-hashtag"></i> PS ID: SIH26033</span>
+                    </div>
+                </div>
+
+                <h3 style="font-size: 1.8rem; margin-bottom: 0.4rem; color: #34d399;">
+                    <i class="fas fa-seedling"></i> AGRI BRIDGE
+                </h3>
+                <h4 style="color: var(--accent); font-weight: 500; margin-bottom: 1rem; font-size: 1.05rem;">
+                    Direct Farm-to-Consumer Digital Marketplace
+                </h4>
+
+                <div class="project-problem-box">
+                    <strong><i class="fas fa-exclamation-triangle"></i> Problem Statement:</strong>
+                    Multiple intermediaries increase supply-chain length and distribution costs, drastically reducing farmer earnings while inflating consumer prices. Farmers struggle with limited market access and opaque pricing.
+                </div>
+
+                <p style="color: #cbd5e1; font-size: 1rem; line-height: 1.7;">
+                    <strong>AGRI BRIDGE</strong> connects local farmers directly with consumers through an open, transparent digital marketplace. By eliminating traditional middlemen, farmers earn higher profits, consumers get fresh, traceable produce at fair prices, and direct payments are settled securely.
+                </p>
+
+                <div class="project-highlights-grid">
+                    <div class="highlight-box">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <div>
+                            <h4>Direct Market Access</h4>
+                            <p>Farmers list produce & sell directly to households with zero intermediary commissions.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-box">
+                        <i class="fas fa-tags"></i>
+                        <div>
+                            <h4>100% Price Transparency</h4>
+                            <p>Real-time breakdown showing exact farmer base price, delivery fee, and final cost.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-box">
+                        <i class="fas fa-route"></i>
+                        <div>
+                            <h4>Farm-to-Door Traceability</h4>
+                            <p>Complete traceability verifying specific farm origin, harvest date, and quality ratings.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-box">
+                        <i class="fas fa-calendar-check"></i>
+                        <div>
+                            <h4>Pre-Order Harvest</h4>
+                            <p>Consumers can reserve upcoming crops before harvest, providing guaranteed income for farmers.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-tags" style="margin-bottom: 1.2rem;">
+                    <span>Smart India Hackathon 2026</span>
+                    <span>Agriculture & FoodTech</span>
+                    <span>Direct Marketplace</span>
+                    <span>Supply Chain Transparency</span>
+                    <span>Django & Python</span>
+                    <span>Real-Time Tracking</span>
+                    <span>Escrow Payments</span>
+                </div>
+
+                <div class="project-actions">
+                    <button type="button" class="btn-project btn-flow" onclick="openAgriFlowModal()">
+                        <i class="fas fa-project-diagram"></i> View Overall Flow & Architecture
+                    </button>
+                    <button type="button" class="btn-project" style="background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); color: #fbbf24;" onclick="openCertModal('iic-hackathon-certificate.jpg', 'Smart India Hackathon 2026 &bull; Shortlisted Certificate (AGRI BRIDGE)', '', 'MoE\'s Innovation Cell (IIC) &bull; Adhiparasakthi Engineering College')">
+                        <i class="fas fa-award"></i> View Hackathon Certificate
+                    </button>
+                    <a href="https://www.youtube.com/watch?v=VpT1Clc6IJU" target="_blank" class="btn-project btn-demo">
+                        <i class="fab fa-youtube"></i> Watch Prototype Demo
+                    </a>
+                    <a href="SIH26033_AGRI_BRIDGE.pdf" target="_blank" class="btn-project btn-pdf">
+                        <i class="fas fa-file-pdf"></i> SIH Presentation (PDF)
+                    </a>
+                </div>
+            </div>
+
+            <!-- Featured Project 2: Bank Challan Filling Machine -->
+            <div class="project-card featured-project" style="border-color: rgba(99, 102, 241, 0.4); box-shadow: 0 15px 45px rgba(99, 102, 241, 0.12);">
+                <div class="featured-header">
+                    <div>
+                        <span class="sih-badge" style="background: rgba(99, 102, 241, 0.15); border-color: rgba(99, 102, 241, 0.4); color: #818cf8;">
+                            <i class="fas fa-microchip"></i> IoT &amp; Hardware Automation
+                        </span>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <span class="project-meta-pill"><i class="fas fa-university"></i> Smart Banking Kiosk</span>
+                        <span class="project-meta-pill"><i class="fas fa-desktop"></i> Touch &amp; Voice Enabled</span>
+                    </div>
+                </div>
+
+                <h3 style="font-size: 1.8rem; margin-bottom: 0.4rem; color: #818cf8;">
+                    <i class="fas fa-money-check-alt"></i> Bank Challan Filling Machine
+                </h3>
+                <h4 style="color: var(--accent); font-weight: 500; margin-bottom: 1rem; font-size: 1.05rem;">
+                    Automated IoT Self-Service Kiosk for Multilingual Deposit &amp; Withdrawal Challans
+                </h4>
+
+                <div class="project-problem-box" style="border-left-color: #6366f1;">
+                    <strong style="color: #818cf8;"><i class="fas fa-exclamation-triangle"></i> Problem Statement:</strong>
+                    Manual filling of paper deposit and withdrawal challans causes long counter queues, high clerical error rates, and major difficulties for elderly, illiterate, and differently-abled bank customers.
+                </div>
+
+                <p style="color: #cbd5e1; font-size: 1rem; line-height: 1.7;">
+                    An end-to-end automated smart kiosk powered by <strong>Raspberry Pi</strong> that simplifies bank transactions. Customers input details via guided touchscreen, barcode passbook scan, or speech-to-text voice recognition in their regional language, and instantly receive a standardized, error-free printed thermal challan slip with verification QR code.
+                </p>
+
+                <div class="project-highlights-grid">
+                    <div class="highlight-box">
+                        <i class="fas fa-microphone-alt"></i>
+                        <div>
+                            <h4>Multilingual Voice Input</h4>
+                            <p>Speech-to-text allows illiterate &amp; elderly customers to dictate details in regional languages.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-box">
+                        <i class="fas fa-barcode"></i>
+                        <div>
+                            <h4>Passbook Barcode Scanner</h4>
+                            <p>Instant optical scan of account bar codes eliminates manual account number typing mistakes.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-box">
+                        <i class="fas fa-print"></i>
+                        <div>
+                            <h4>High-Speed Thermal Print</h4>
+                            <p>Generates compact, standardized bank slips with verification QR code in under 3 seconds.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-box">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <div>
+                            <h4>85% Queue Time Reduction</h4>
+                            <p>Slashes counter transaction time from 5-8 minutes down to 45 seconds per customer.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-tags" style="margin-bottom: 1.2rem;">
+                    <span>IoT &amp; Embedded</span>
+                    <span>Raspberry Pi 4</span>
+                    <span>Python GUI</span>
+                    <span>Speech Recognition (STT)</span>
+                    <span>Barcode Optical Scanning</span>
+                    <span>ESC/POS Thermal Printing</span>
+                    <span>Smart Banking Automation</span>
+                </div>
+
+                <div class="project-actions">
+                    <button type="button" class="btn-project btn-flow" onclick="openChallanFlowModal()" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">
+                        <i class="fas fa-project-diagram"></i> View Overall Flow &amp; Architecture
+                    </button>
+                    <a href="#contact" class="btn-project btn-pdf">
+                        <i class="fas fa-envelope"></i> Inquire About Project
+                    </a>
+                </div>
+            </div>
+
+            <!-- Featured Project 3: MyBusStand -->
+            <div class="project-card featured-project" style="border-color: rgba(6, 182, 212, 0.4); box-shadow: 0 15px 45px rgba(6, 182, 212, 0.12);">
+                <div class="featured-header">
+                    <div>
+                        <span class="sih-badge" style="background: rgba(6, 182, 212, 0.15); border-color: rgba(6, 182, 212, 0.4); color: #22d3ee;">
+                            <i class="fas fa-bus"></i> Smart Transit &amp; Web Platform
+                        </span>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <span class="project-meta-pill"><i class="fas fa-route"></i> Public Transit Management</span>
+                        <span class="project-meta-pill"><i class="fas fa-server"></i> Django + MySQL Full Stack</span>
+                    </div>
+                </div>
+
+                <h3 style="font-size: 1.8rem; margin-bottom: 0.4rem; color: #22d3ee;">
+                    <i class="fas fa-bus-alt"></i> MyBusStand
+                </h3>
+                <h4 style="color: var(--accent); font-weight: 500; margin-bottom: 1rem; font-size: 1.05rem;">
+                    Intelligent Public Bus Transit Scheduling, Real-Time Route Discovery &amp; Passenger Portal
+                </h4>
+
+                <div class="project-problem-box" style="border-left-color: #06b6d4;">
+                    <strong style="color: #22d3ee;"><i class="fas fa-exclamation-triangle"></i> Problem Statement:</strong>
+                    Commuters struggle with unannounced bus delays, outdated printed timetable boards at terminals, lack of connection awareness, and overcrowding during peak transit hours.
+                </div>
+
+                <p style="color: #cbd5e1; font-size: 1rem; line-height: 1.7;">
+                    <strong>MyBusStand</strong> is a comprehensive full-stack public transit management portal. Passengers can search buses between any two stops, inspect full route sequences, check live schedule statuses, and calculate fares, while bus depot authorities manage fleet dispatch and real-time alerts through an administrative dashboard.
+                </p>
+
+                <div class="project-highlights-grid">
+                    <div class="highlight-box">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <div>
+                            <h4>Smart Route Discovery</h4>
+                            <p>Search direct and connecting buses between origin and destination with full stop timetables.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-box">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Real-Time Schedule Status</h4>
+                            <p>Live schedule updates indicating on-time, delayed, departing, or arrived bus services.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-box">
+                        <i class="fas fa-calculator"></i>
+                        <div>
+                            <h4>Fare &amp; Distance Estimator</h4>
+                            <p>Automated fare matrix calculation based on stage distance, bus class, and concession types.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-box">
+                        <i class="fas fa-user-shield"></i>
+                        <div>
+                            <h4>Depot Fleet Dispatch Console</h4>
+                            <p>Administrative portal for depot managers to assign trips, drivers, and broadcast transit alerts.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-tags" style="margin-bottom: 1.2rem;">
+                    <span>Full Stack Web Development</span>
+                    <span>Python &amp; Django</span>
+                    <span>MySQL Relational DB</span>
+                    <span>REST APIs</span>
+                    <span>JavaScript (ES6+)</span>
+                    <span>Transit Fleet Management</span>
+                    <span>Responsive Web App</span>
+                </div>
+
+                <div class="project-actions">
+                    <button type="button" class="btn-project btn-flow" onclick="openBusFlowModal()" style="background: linear-gradient(135deg, #06b6d4, #0284c7);">
+                        <i class="fas fa-project-diagram"></i> View Overall Flow &amp; Architecture
+                    </button>
+                    <a href="#contact" class="btn-project btn-pdf">
+                        <i class="fas fa-envelope"></i> Inquire About Project
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <h2 class="section-title">Education</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>B.E. Computer Science Engineering</h3>
+                    <p class="year">2023 – 2027</p>
+                    <p>Adhiparasakthi Engineering College</p>
+                    <p>CGPA: 8.04</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Higher Secondary Certificate (HSC)</h3>
+                    <p class="year">2021 – 2023</p>
+                    <p>Percentage: 66%</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Secondary School Leaving Certificate (SSLC)</h3>
+                    <p class="year">Completed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications">
+        <h2 class="section-title">Certifications</h2>
+        <div class="certifications-grid">
+            <div class="cert-card clickable" onclick="openCertModal('iic-hackathon-certificate.jpg', 'IIC Hackathon &bull; Smart India Hackathon 2026 Shortlisted Certificate', '', 'MoE\'s Innovation Cell (IIC) &bull; Adhiparasakthi Engineering College')" title="Click to view Certificate">
+                <i class="fas fa-trophy" style="color: #f59e0b;"></i>
+                <h3>IIC Hackathon</h3>
+                <span class="cert-view-badge"><i class="fas fa-eye"></i> View Certificate</span>
+            </div>
+            <div class="cert-card clickable" onclick="openCertModal('ai-skills-passport.png', 'AI Skills Passport - EY &amp; Microsoft', '', 'EY &amp; Microsoft')" title="Click to view Certificate">
+                <i class="fas fa-brain"></i>
+                <h3>AI Skills Passport</h3>
+                <span class="cert-view-badge"><i class="fas fa-eye"></i> View Certificate</span>
+            </div>
+            <div class="cert-card clickable" onclick="openCertModal('aws-certificate.png', 'AWS Academy Graduate - Generative AI Foundations', 'https://www.credly.com/badges/5db78822-714b-4d0b-a998-cd6d7586805c', 'AWS Academy')" title="Click to view Certificate">
+                <i class="fab fa-aws" style="color: #ff9900;"></i>
+                <h3>AWS</h3>
+                <span class="cert-view-badge"><i class="fas fa-eye"></i> View Certificate</span>
+            </div>
+            <div class="cert-card clickable" onclick="openCertModal('ibm-certificate.png', 'Getting Started with Artificial Intelligence - IBM SkillsBuild', 'https://www.credly.com/badges/d0487de5-c9e5-43dc-a384-da1000a272bf', 'IBM SkillsBuild')" title="Click to view Certificate">
+                <div style="height: 2rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                    <img src="ibm-logo.svg" alt="IBM Logo" style="height: 28px; width: auto; max-width: 85px; object-fit: contain; filter: drop-shadow(0 2px 10px rgba(31, 112, 193, 0.45));">
+                </div>
+                <h3>IBM</h3>
+                <span class="cert-view-badge"><i class="fas fa-eye"></i> View Certificate</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interests & Strengths Section -->
+    <section id="interests" class="interests">
+        <h2 class="section-title">Interests & Strengths</h2>
+        <div class="interests-grid">
+            <div class="interest-card">
+                <i class="fas fa-laptop-code"></i>
+                <h3>Full Stack Development</h3>
+            </div>
+            <div class="interest-card">
+                <i class="fas fa-robot"></i>
+                <h3>IoT Solutions</h3>
+            </div>
+            <div class="interest-card">
+                <i class="fas fa-lightbulb"></i>
+                <h3>Problem Solving</h3>
+            </div>
+            <div class="interest-card">
+                <i class="fas fa-users"></i>
+                <h3>Team Collaboration</h3>
+            </div>
+            <div class="interest-card">
+                <i class="fas fa-book"></i>
+                <h3>Continuous Learning</h3>
+            </div>
+            <div class="interest-card">
+                <i class="fas fa-cogs"></i>
+                <h3>System Design</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Goals Section -->
+    <section id="goals" class="goals">
+        <h2 class="section-title">Goals</h2>
+        <div class="goals-content">
+            <p>"To leverage my skills in full-stack development and IoT to create innovative solutions that make a positive impact on society, while continuously growing as a developer and contributing to open-source projects."</p>
+        </div>
+    </section>
+
+    <!-- Hobbies Section -->
+    <section id="hobbies" class="hobbies">
+        <h2 class="section-title">Hobbies</h2>
+        <div class="hobbies-grid">
+            <div class="hobby-card">
+                <i class="fas fa-utensils"></i>
+                <h3>Cooking</h3>
+            </div>
+            <div class="hobby-card">
+                <i class="fas fa-music"></i>
+                <h3>Music</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="contact-content">
+            <p>Feel free to reach out for collaborations, projects, or just to say hello!</p>
+            <div class="contact-links">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=bhuvanesh3756@gmail.com" target="_blank" class="contact-link email-action-link" title="Send Email">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email</span>
+                </a>
+                <a href="tel:7010164020" class="contact-link">
+                    <i class="fas fa-phone"></i>
+                    <span>7010164020</span>
+                </a>
+                <a href="https://www.linkedin.com/in/bhuvanesh-r-990426326" target="_blank" class="contact-link">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com/bhuvanesh2711" target="_blank" class="contact-link">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+                <a href="#" class="contact-link">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>India</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Thank you for visiting my portfolio!</p>
+        <div class="footer-social">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=bhuvanesh3756@gmail.com" target="_blank" class="email-action-link" title="Email: bhuvanesh3756@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/bhuvanesh-r-990426326" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/bhuvanesh2711" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Hero Terminal & Typewriter Engine
+        const typewriterPhrases = [
+            "Full-Stack Systems & Backend Architect",
+            "IoT & Embedded Hardware Engineer",
+            "Smart India Hackathon 2026 Shortlisted",
+            "Python, Django & MySQL Specialist",
+            "Raspberry Pi 4 Edge Automation Developer"
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typewriterEl = document.getElementById('heroTypewriter');
+
+        function typeLoop() {
+            if (!typewriterEl) return;
+            const currentPhrase = typewriterPhrases[phraseIndex];
+            
+            if (isDeleting) {
+                typewriterEl.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterEl.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 28 : 60;
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                typeSpeed = 1900;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % typewriterPhrases.length;
+                typeSpeed = 400;
+            }
+
+            setTimeout(typeLoop, typeSpeed);
+        }
+
+        // Terminal Tab Switcher
+        function switchTerminalTab(tabId) {
+            document.querySelectorAll('.term-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.term-pane').forEach(p => p.classList.remove('active'));
+
+            const activeTab = document.getElementById('tab-btn-' + tabId);
+            const activePane = document.getElementById('term-pane-' + tabId);
+
+            if (activeTab) activeTab.classList.add('active');
+            if (activePane) activePane.classList.add('active');
+        }
+
+        // Live Diagnostic trigger in terminal
+        function runTerminalDiag() {
+            const output = document.getElementById('termDiagOutput');
+            if (!output) return;
+            output.innerHTML = '<span style="color:#fbbf24;"><i class="fas fa-spinner fa-spin"></i> Executing runtime diagnostic probe...</span>';
+            setTimeout(() => {
+                output.innerHTML = '<span style="color:#34d399;">✓ ALL SYSTEMS OPERATIONAL: Django Core, MySQL ACID Schema, RPi GPIO &amp; Thermal Printing validated!</span>';
+            }, 600);
+        }
+
+        // Start typewriter on load
+        if (typewriterEl) {
+            typeLoop();
+        }
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(15, 23, 42, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(15, 23, 42, 0.95)';
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections and cards
+        document.querySelectorAll('section, .skill-card, .project-card, .cert-card, .interest-card, .hobby-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Email mobile/desktop handler
+        document.querySelectorAll('.email-action-link').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                if (isMobile) {
+                    e.preventDefault();
+                    window.location.href = 'mailto:bhuvanesh3756@gmail.com';
+                }
+            });
+        });
+
+        // Copy email to clipboard function
+        function copyEmail(e) {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            const email = 'bhuvanesh3756@gmail.com';
+            const showSuccess = () => {
+                const toast = document.getElementById('copyToast');
+                if (toast) {
+                    toast.classList.add('show');
+                    setTimeout(() => toast.classList.remove('show'), 2000);
+                }
+            };
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(email).then(showSuccess).catch(() => fallbackCopy(email, showSuccess));
+            } else {
+                fallbackCopy(email, showSuccess);
+            }
+        }
+
+        function fallbackCopy(text, callback) {
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+                if (callback) callback();
+            } catch (err) {
+                window.prompt('Copy email:', text);
+            }
+            document.body.removeChild(tempInput);
+        }
+
+        // Certificate Modal Functions
+        function openCertModal(imageSrc, title, verifyUrl, issuer) {
+            const modal = document.getElementById('certModal');
+            const img = document.getElementById('certModalImg');
+            const titleEl = document.getElementById('certModalTitle');
+            const verifyBtn = document.getElementById('certVerifyBtn');
+            const openNewTabBtn = document.getElementById('certOpenNewTabBtn');
+            const badgeEl = document.getElementById('certModalBadge');
+
+            if (img) img.src = imageSrc;
+            if (titleEl) {
+                let iconHtml = '<i class="fas fa-certificate"></i>';
+                if (title.toLowerCase().includes('ibm')) {
+                    iconHtml = '<img src="ibm-logo.svg" alt="IBM" style="height: 18px; width: auto; vertical-align: -2px; margin-right: 6px;">';
+                } else if (title.toLowerCase().includes('aws')) {
+                    iconHtml = '<i class="fab fa-aws" style="color: #ff9900; margin-right: 6px;"></i>';
+                } else if (title.toLowerCase().includes('iic') || title.toLowerCase().includes('hackathon')) {
+                    iconHtml = '<i class="fas fa-trophy" style="color: #f59e0b; margin-right: 6px;"></i>';
+                }
+                titleEl.innerHTML = `${iconHtml} ${title}`;
+            }
+            if (openNewTabBtn) openNewTabBtn.href = imageSrc;
+            if (badgeEl) badgeEl.innerHTML = `<i class="fas fa-shield-alt" style="color: var(--accent);"></i> Verified Credential &bull; ${issuer || 'EY & Microsoft'}`;
+            
+            if (verifyBtn) {
+                if (verifyUrl) {
+                    verifyBtn.href = verifyUrl;
+                    verifyBtn.style.display = 'inline-flex';
+                } else {
+                    verifyBtn.style.display = 'none';
+                }
+            }
+
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeCertModal() {
+            const modal = document.getElementById('certModal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function closeCertModalOnBackdrop(e) {
+            if (e.target.id === 'certModal') {
+                closeCertModal();
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeResumeModal();
+                closeCertModal();
+                closeAgriFlowModal();
+                closeChallanFlowModal();
+                closeBusFlowModal();
+            }
+        });
+
+        // AGRI BRIDGE Flow Modal Functions
+        function openAgriFlowModal() {
+            const modal = document.getElementById('agriFlowModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeAgriFlowModal() {
+            const modal = document.getElementById('agriFlowModal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function closeAgriFlowModalOnBackdrop(e) {
+            if (e.target.id === 'agriFlowModal') {
+                closeAgriFlowModal();
+            }
+        }
+
+        // Bank Challan Filling Machine Flow Modal Functions
+        function openChallanFlowModal() {
+            const modal = document.getElementById('challanFlowModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeChallanFlowModal() {
+            const modal = document.getElementById('challanFlowModal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function closeChallanFlowModalOnBackdrop(e) {
+            if (e.target.id === 'challanFlowModal') {
+                closeChallanFlowModal();
+            }
+        }
+
+        // MyBusStand Flow Modal Functions
+        function openBusFlowModal() {
+            const modal = document.getElementById('busFlowModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeBusFlowModal() {
+            const modal = document.getElementById('busFlowModal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function closeBusFlowModalOnBackdrop(e) {
+            if (e.target.id === 'busFlowModal') {
+                closeBusFlowModal();
+            }
+        }
+
+        // Resume Modal Functions
+        function openResumeModal() {
+            const modal = document.getElementById('resumeModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeResumeModal() {
+            const modal = document.getElementById('resumeModal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function closeResumeModalOnBackdrop(e) {
+            if (e.target.id === 'resumeModal') {
+                closeResumeModal();
+            }
+        }
+    </script>
+
+    <!-- Resume Preview & Download Modal -->
+    <div id="resumeModal" class="cert-modal resume-modal" onclick="closeResumeModalOnBackdrop(event)">
+        <div class="cert-modal-content resume-modal-content">
+            <div class="cert-modal-header">
+                <h3 style="display: flex; align-items: center; gap: 0.6rem; font-size: 1.05rem;">
+                    <i class="fas fa-file-pdf" style="color: #ef4444; font-size: 1.3rem;"></i>
+                    <span>Bhuvanesh R &mdash; Curriculum Vitae (Resume)</span>
+                </h3>
+                <div style="display: flex; align-items: center; gap: 0.8rem;">
+                    <a href="Bhuvanesh_R_Resume.pdf" download="Bhuvanesh_R_Resume.pdf" class="btn-resume-download-head" title="Download Resume as PDF">
+                        <i class="fas fa-download"></i> <span>Download PDF</span>
+                    </a>
+                    <a href="Bhuvanesh_R_Resume.pdf" target="_blank" class="btn-resume-icon-head" title="Open PDF in new tab">
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <button type="button" class="cert-modal-close" onclick="closeResumeModal()" title="Close">&times;</button>
+                </div>
+            </div>
+            
+            <div class="resume-modal-body">
+                <!-- Embedded PDF Viewer -->
+                <object data="Bhuvanesh_R_Resume.pdf#toolbar=1&navpanes=0" type="application/pdf" class="resume-embed-object">
+                    <iframe src="Bhuvanesh_R_Resume.pdf#toolbar=1" class="resume-embed-frame">
+                        <!-- Fallback Card for browsers without inline PDF viewer -->
+                        <div class="resume-fallback-card">
+                            <i class="fas fa-file-pdf" style="font-size: 3.5rem; color: #ef4444; margin-bottom: 1rem;"></i>
+                            <h3 style="color: #fff; margin-bottom: 0.4rem;">Bhuvanesh_R_Resume.pdf</h3>
+                            <p style="color: #cbd5e1; margin-bottom: 0.5rem;">Computer Science Engineering Student | Full Stack &amp; Embedded Systems Developer</p>
+                            <p style="font-size: 0.85rem; color: var(--gray); margin-bottom: 1.5rem;">Adhiparasakthi Engineering College &bull; CGPA: 8.04 &bull; Python, Django, MySQL, Raspberry Pi</p>
+                            <a href="Bhuvanesh_R_Resume.pdf" download="Bhuvanesh_R_Resume.pdf" class="btn btn-primary" style="padding: 0.8rem 2rem;">
+                                <i class="fas fa-download"></i> Click Here to Download Resume
+                            </a>
+                        </div>
+                    </iframe>
+                </object>
+            </div>
+
+            <div class="cert-modal-footer" style="padding: 0.85rem 1.5rem; justify-content: space-between;">
+                <span style="color: var(--gray); font-size: 0.85rem; display: flex; align-items: center; gap: 0.4rem;">
+                    <i class="fas fa-check-circle" style="color: #10b981;"></i> B.E CSE 2023–2027 &bull; Adhiparasakthi Engg College &bull; 7010164020
+                </span>
+                <div style="display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap;">
+                    <a href="Bhuvanesh_R_Resume.pdf" download="Bhuvanesh_R_Resume.pdf" class="btn btn-primary" style="padding: 0.55rem 1.4rem; font-size: 0.88rem; background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35);">
+                        <i class="fas fa-download"></i> Download Resume (PDF)
+                    </a>
+                    <button type="button" class="verify-btn" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); cursor: pointer;" onclick="closeResumeModal()">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Certificate Modal / Lightbox -->
+    <div id="certModal" class="cert-modal" onclick="closeCertModalOnBackdrop(event)">
+        <div class="cert-modal-content">
+            <div class="cert-modal-header">
+                <h3 id="certModalTitle"><i class="fas fa-certificate"></i> Certificate</h3>
+                <button type="button" class="cert-modal-close" onclick="closeCertModal()" title="Close">&times;</button>
+            </div>
+            <div class="cert-modal-body">
+                <img id="certModalImg" src="ai-skills-passport.png" alt="Certificate">
+            </div>
+            <div class="cert-modal-footer">
+                <span id="certModalBadge" style="color: var(--gray); font-size: 0.85rem;"><i class="fas fa-shield-alt" style="color: var(--accent);"></i> Verified Credential &bull; EY &amp; Microsoft</span>
+                <div style="display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap;">
+                    <a id="certVerifyBtn" href="#" target="_blank" class="verify-btn" style="display: none;"><i class="fas fa-external-link-alt"></i> Verify</a>
+                    <a id="certOpenNewTabBtn" href="ai-skills-passport.png" target="_blank" class="verify-btn" style="background: rgba(255,255,255,0.1);"><i class="fas fa-expand"></i> Full Image</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AGRI BRIDGE Flow & Architecture Modal -->
+    <div id="agriFlowModal" class="flow-modal" onclick="closeAgriFlowModalOnBackdrop(event)">
+        <div class="flow-modal-content">
+            <div class="flow-modal-header">
+                <h3>
+                    <i class="fas fa-seedling" style="color: #34d399;"></i>
+                    <span>AGRI BRIDGE — Overall Technical Flow &amp; Architecture</span>
+                </h3>
+                <button type="button" class="cert-modal-close" onclick="closeAgriFlowModal()" title="Close">&times;</button>
+            </div>
+            <div class="flow-modal-body">
+                <!-- Project Summary Banner -->
+                <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 1.2rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                    <div>
+                        <div style="color: #34d399; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.2rem;">
+                            <i class="fas fa-award"></i> SMART INDIA HACKATHON 2026 (Software Category)
+                        </div>
+                        <div style="color: var(--light); font-size: 0.9rem;">
+                            <strong>Problem Statement (SIH26033):</strong> Multiple intermediaries reduce farmers' earnings and increase consumer prices.
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                        <span class="sih-badge" style="font-size: 0.8rem;"><i class="fas fa-users"></i> Team: Infinite Matrix</span>
+                        <span class="project-meta-pill"><i class="fas fa-id-badge"></i> Team ID: 128974</span>
+                    </div>
+                </div>
+
+                <!-- 1. Farmer Workflow -->
+                <div class="workflow-track track-farmer">
+                    <div class="track-header">
+                        <i class="fas fa-tractor"></i>
+                        <span>1. Farmer Workflow (10 Steps)</span>
+                        <span style="font-size: 0.8rem; font-weight: 400; color: #a7f3d0; margin-left: auto;">Producer Journey</span>
+                    </div>
+                    <div class="workflow-steps-grid">
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 01</div>
+                            <div class="step-title">Open App</div>
+                            <div class="step-desc">Launch AGRI BRIDGE portal on web or mobile device.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 02</div>
+                            <div class="step-title">Register / Login</div>
+                            <div class="step-desc">Regional language authentication via phone OTP.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 03</div>
+                            <div class="step-title">Verify Account</div>
+                            <div class="step-desc">KYC, land records &amp; farmer ID verification.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 04</div>
+                            <div class="step-title">Create Profile</div>
+                            <div class="step-desc">Farm location, bio, soil type &amp; crop specializations.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 05</div>
+                            <div class="step-title">Add Product Details</div>
+                            <div class="step-desc">Crop name, harvest date, grade &amp; organic status.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 06</div>
+                            <div class="step-title">Set Price &amp; Quantity</div>
+                            <div class="step-desc">Farmer sets direct price/kg and available quantity.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 07</div>
+                            <div class="step-title">Publish Listing</div>
+                            <div class="step-desc">Product goes live on the marketplace for buyers.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 08</div>
+                            <div class="step-title">Receive Order</div>
+                            <div class="step-desc">Instant notification of customer purchase request.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 09</div>
+                            <div class="step-title">Handover Produce</div>
+                            <div class="step-desc">Pack fresh produce &amp; hand over to verified delivery partner.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 10</div>
+                            <div class="step-title">Receive Payment</div>
+                            <div class="step-desc">Direct bank transfer with zero middleman deductions.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Platform Connector -->
+                <div class="flow-connector-bar">
+                    <span><i class="fas fa-arrows-alt-v"></i> Direct Real-time Connection &amp; Escrow Gateway</span>
+                </div>
+
+                <!-- 2. AGRI BRIDGE Core Platform -->
+                <div class="workflow-track track-hub">
+                    <div class="track-header">
+                        <i class="fas fa-server"></i>
+                        <span>2. AGRI BRIDGE Platform Engine (Central Hub)</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem;">
+                        <div style="background: rgba(15, 23, 42, 0.7); padding: 1rem; border-radius: 10px; border: 1px solid rgba(129, 140, 248, 0.2);">
+                            <h4 style="color: #a5b4fc; font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fas fa-compress-arrows-alt"></i> Direct Matching</h4>
+                            <p style="font-size: 0.8rem; color: var(--gray); margin: 0;">Matches consumers with nearby farms based on GPS distance &amp; produce freshness.</p>
+                        </div>
+                        <div style="background: rgba(15, 23, 42, 0.7); padding: 1rem; border-radius: 10px; border: 1px solid rgba(129, 140, 248, 0.2);">
+                            <h4 style="color: #a5b4fc; font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fas fa-calculator"></i> Price Transparency Engine</h4>
+                            <p style="font-size: 0.8rem; color: var(--gray); margin: 0;">Dissects cost: <strong>Farmer Price + Delivery Fee = Total</strong> (No hidden commission).</p>
+                        </div>
+                        <div style="background: rgba(15, 23, 42, 0.7); padding: 1rem; border-radius: 10px; border: 1px solid rgba(129, 140, 248, 0.2);">
+                            <h4 style="color: #a5b4fc; font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fas fa-calendar-alt"></i> Pre-Order Harvest System</h4>
+                            <p style="font-size: 0.8rem; color: var(--gray); margin: 0;">Allows consumers to book crops prior to harvesting, ensuring guaranteed farmer revenue.</p>
+                        </div>
+                        <div style="background: rgba(15, 23, 42, 0.7); padding: 1rem; border-radius: 10px; border: 1px solid rgba(129, 140, 248, 0.2);">
+                            <h4 style="color: #a5b4fc; font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fas fa-shield-alt"></i> Secure Escrow Settlement</h4>
+                            <p style="font-size: 0.8rem; color: var(--gray); margin: 0;">Buyer payment held safely until produce is inspected &amp; delivered to consumer.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Platform Connector -->
+                <div class="flow-connector-bar">
+                    <span><i class="fas fa-arrows-alt-v"></i> Live Order Tracking &amp; Quality Guarantee</span>
+                </div>
+
+                <!-- 3. Customer Workflow -->
+                <div class="workflow-track track-customer">
+                    <div class="track-header">
+                        <i class="fas fa-shopping-basket"></i>
+                        <span>3. Customer Workflow (10 Steps)</span>
+                        <span style="font-size: 0.8rem; font-weight: 400; color: #bae6fd; margin-left: auto;">Consumer Journey</span>
+                    </div>
+                    <div class="workflow-steps-grid">
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 01</div>
+                            <div class="step-title">Open App</div>
+                            <div class="step-desc">Open AGRI BRIDGE marketplace in browser/phone.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 02</div>
+                            <div class="step-title">Register / Login</div>
+                            <div class="step-desc">Quick sign up via mobile number or email.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 03</div>
+                            <div class="step-title">Set Location</div>
+                            <div class="step-desc">Pinpoint delivery address via GPS or pincode.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 04</div>
+                            <div class="step-title">Browse Nearby Produce</div>
+                            <div class="step-desc">Explore farm-fresh vegetables, grains &amp; fruits.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 05</div>
+                            <div class="step-title">Compare Farmers &amp; Prices</div>
+                            <div class="step-desc">Review transparent pricing, distance &amp; farmer ratings.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 06</div>
+                            <div class="step-title">Select Produce</div>
+                            <div class="step-desc">Choose items and desired weight/quantity.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 07</div>
+                            <div class="step-title">Add to Cart</div>
+                            <div class="step-desc">Review itemized bill (Produce price + delivery).</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 08</div>
+                            <div class="step-title">Secure Payment</div>
+                            <div class="step-desc">Pay via UPI, Cards, Netbanking or Cash on Delivery.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 09</div>
+                            <div class="step-title">Track Delivery</div>
+                            <div class="step-desc">Live GPS dispatch updates from farm to doorstep.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 10</div>
+                            <div class="step-title">Delivery &amp; Rating</div>
+                            <div class="step-desc">Receive fresh produce &amp; rate the farmer's quality.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feasibility & Growth Roadmap Section -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                    <!-- Risk Management -->
+                    <div style="background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 1.2rem;">
+                        <h4 style="color: #f59e0b; margin-bottom: 0.8rem; font-size: 1rem;"><i class="fas fa-shield-virus"></i> Risk Management</h4>
+                        <ul style="list-style: none; padding: 0; font-size: 0.85rem; color: #cbd5e1; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong style="color: var(--light);">Fake Listings:</strong> Rigorous farmer KYC &amp; land record verification.</li>
+                            <li><strong style="color: var(--light);">Delivery Delays:</strong> Integrated route tracking &amp; local delivery partners.</li>
+                            <li><strong style="color: var(--light);">Quality Issues:</strong> Transparent buyer rating &amp; review mechanism.</li>
+                            <li><strong style="color: var(--light);">Payment Security:</strong> Secure RBI-compliant digital payment gateway.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Growth Roadmap -->
+                    <div style="background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 1.2rem;">
+                        <h4 style="color: #10b981; margin-bottom: 0.8rem; font-size: 1rem;"><i class="fas fa-chart-line"></i> Growth Roadmap</h4>
+                        <div class="roadmap-grid">
+                            <div class="roadmap-card">
+                                <div class="roadmap-phase">Phase 1</div>
+                                <div class="roadmap-title">Local Farmer Onboarding</div>
+                            </div>
+                            <div class="roadmap-card">
+                                <div class="roadmap-phase">Phase 2</div>
+                                <div class="roadmap-title">Consumer Marketplace</div>
+                            </div>
+                            <div class="roadmap-card">
+                                <div class="roadmap-phase">Phase 3</div>
+                                <div class="roadmap-title">Bulk Buyers &amp; Delivery</div>
+                            </div>
+                            <div class="roadmap-card">
+                                <div class="roadmap-phase">Phase 4</div>
+                                <div class="roadmap-title">Regional Expansion</div>
+                            </div>
+                            <div class="roadmap-card">
+                                <div class="roadmap-phase">Phase 5</div>
+                                <div class="roadmap-title">Smart AI Pricing</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cert-modal-footer">
+                <span style="color: var(--gray); font-size: 0.85rem;">
+                    <i class="fas fa-check-circle" style="color: #10b981;"></i> Smart India Hackathon 2026 Solution by Team Infinite Matrix
+                </span>
+                <div style="display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap;">
+                    <a href="https://www.youtube.com/watch?v=VpT1Clc6IJU" target="_blank" class="verify-btn" style="background: #ef4444;">
+                        <i class="fab fa-youtube"></i> Watch Prototype Demo
+                    </a>
+                    <a href="SIH26033_AGRI_BRIDGE.pdf" target="_blank" class="verify-btn" style="background: rgba(255,255,255,0.1);">
+                        <i class="fas fa-file-pdf"></i> Open SIH PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bank Challan Filling Machine Flow & Architecture Modal -->
+    <div id="challanFlowModal" class="flow-modal" onclick="closeChallanFlowModalOnBackdrop(event)">
+        <div class="flow-modal-content">
+            <div class="flow-modal-header">
+                <h3>
+                    <i class="fas fa-money-check-alt" style="color: #818cf8;"></i>
+                    <span>Bank Challan Filling Machine — Overall Technical Flow &amp; Architecture</span>
+                </h3>
+                <button type="button" class="cert-modal-close" onclick="closeChallanFlowModal()" title="Close">&times;</button>
+            </div>
+            <div class="flow-modal-body">
+                <!-- Project Summary Banner -->
+                <div style="background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 12px; padding: 1.2rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                    <div>
+                        <div style="color: #818cf8; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.2rem;">
+                            <i class="fas fa-microchip"></i> IoT &amp; EMBEDDED AUTOMATION (Smart Banking Kiosk)
+                        </div>
+                        <div style="color: var(--light); font-size: 0.9rem;">
+                            <strong>Problem Statement:</strong> Manual paper slip filling causes 5–8 min counter bottlenecks, clerical errors, and severe difficulty for elderly and illiterate citizens.
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                        <span class="sih-badge" style="background: rgba(99, 102, 241, 0.15); border-color: rgba(99, 102, 241, 0.4); color: #818cf8; font-size: 0.8rem;"><i class="fas fa-university"></i> Self-Service Kiosk</span>
+                        <span class="project-meta-pill"><i class="fas fa-microchip"></i> Raspberry Pi 4</span>
+                    </div>
+                </div>
+
+                <!-- 1. Customer Kiosk Workflow -->
+                <div class="workflow-track track-kiosk-user">
+                    <div class="track-header">
+                        <i class="fas fa-user-check"></i>
+                        <span>1. Customer Self-Service Kiosk Workflow (10 Steps)</span>
+                        <span style="font-size: 0.8rem; font-weight: 400; color: #c7d2fe; margin-left: auto;">Citizen Touch &amp; Voice Interaction</span>
+                    </div>
+                    <div class="workflow-steps-grid">
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 01</div>
+                            <div class="step-title">Approach Kiosk</div>
+                            <div class="step-desc">Customer approaches the self-service terminal in bank branch lobby.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 02</div>
+                            <div class="step-title">Language Selection</div>
+                            <div class="step-desc">Selects preferred regional language (Tamil, English, Hindi) via touch or voice.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 03</div>
+                            <div class="step-title">Transaction Type</div>
+                            <div class="step-desc">Chooses Cash Deposit, Cash Withdrawal, Cheque Drop, or NEFT Challan.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 04</div>
+                            <div class="step-title">Account Input</div>
+                            <div class="step-desc">Scans passbook barcode or speaks account number via integrated microphone.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 05</div>
+                            <div class="step-title">Account Validation</div>
+                            <div class="step-desc">Kiosk validates account checksum and displays masked account holder name.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 06</div>
+                            <div class="step-title">Enter Denominations</div>
+                            <div class="step-desc">Inputs currency count (₹500, ₹200, ₹100 notes) via visual touch keypad.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 07</div>
+                            <div class="step-title">Voice Confirmation</div>
+                            <div class="step-desc">Audio feedback reads out total sum and details in native tongue for reassurance.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 08</div>
+                            <div class="step-title">Review Challan</div>
+                            <div class="step-desc">Full high-contrast digital challan preview displayed on screen for final check.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 09</div>
+                            <div class="step-title">Instant Thermal Print</div>
+                            <div class="step-desc">High-speed thermal printer dispenses standardized slip with encoded CBS QR code.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 10</div>
+                            <div class="step-title">Proceed to Counter</div>
+                            <div class="step-desc">Customer hands printed slip + cash directly to teller; transaction completed in seconds.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Platform Connector -->
+                <div class="flow-connector-bar">
+                    <span><i class="fas fa-arrows-alt-v"></i> Microcontroller Interfacing, Serial Bus &amp; Speech Recognition Pipeline</span>
+                </div>
+
+                <!-- 2. Kiosk Core Engine -->
+                <div class="workflow-track track-kiosk-hardware">
+                    <div class="track-header">
+                        <i class="fas fa-cogs"></i>
+                        <span>2. Embedded Hardware &amp; Processing Engine (Kiosk Core)</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem;">
+                        <div style="background: rgba(15, 23, 42, 0.7); padding: 1rem; border-radius: 10px; border: 1px solid rgba(245, 158, 11, 0.2);">
+                            <h4 style="color: #fbbf24; font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fas fa-microchip"></i> Raspberry Pi 4 Core</h4>
+                            <p style="font-size: 0.8rem; color: var(--gray); margin: 0;">Quad-core ARM Cortex processor running Linux OS and responsive Python touchscreen application.</p>
+                        </div>
+                        <div style="background: rgba(15, 23, 42, 0.7); padding: 1rem; border-radius: 10px; border: 1px solid rgba(245, 158, 11, 0.2);">
+                            <h4 style="color: #fbbf24; font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fas fa-microphone-alt"></i> Multilingual STT Engine</h4>
+                            <p style="font-size: 0.8rem; color: var(--gray); margin: 0;">Speech recognition module converts spoken regional numerals into clean structured form data.</p>
+                        </div>
+                        <div style="background: rgba(15, 23, 42, 0.7); padding: 1rem; border-radius: 10px; border: 1px solid rgba(245, 158, 11, 0.2);">
+                            <h4 style="color: #fbbf24; font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fas fa-barcode"></i> Optical Barcode Scanner</h4>
+                            <p style="font-size: 0.8rem; color: var(--gray); margin: 0;">High-precision 1D/2D optical scanner decodes bank passbook account barcodes in under 200ms.</p>
+                        </div>
+                        <div style="background: rgba(15, 23, 42, 0.7); padding: 1rem; border-radius: 10px; border: 1px solid rgba(245, 158, 11, 0.2);">
+                            <h4 style="color: #fbbf24; font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fas fa-print"></i> ESC/POS Thermal Hub</h4>
+                            <p style="font-size: 0.8rem; color: var(--gray); margin: 0;">Industrial 80mm thermal receipt printer rendering standardized bank vouchers &amp; QR verification tokens.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Platform Connector -->
+                <div class="flow-connector-bar">
+                    <span><i class="fas fa-arrows-alt-v"></i> Teller Counter Handover &amp; QR-Accelerated CBS Verification</span>
+                </div>
+
+                <!-- 3. Teller / Core Banking Workflow -->
+                <div class="workflow-track track-bank-teller">
+                    <div class="track-header">
+                        <i class="fas fa-university"></i>
+                        <span>3. Bank Teller &amp; Core Banking Workflow (10 Steps)</span>
+                        <span style="font-size: 0.8rem; font-weight: 400; color: #a7f3d0; margin-left: auto;">Teller Processing Journey</span>
+                    </div>
+                    <div class="workflow-steps-grid">
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 01</div>
+                            <div class="step-title">Receive Printed Slip</div>
+                            <div class="step-desc">Teller receives crisp, machine-printed standardized challan from customer.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 02</div>
+                            <div class="step-title">Scan Slip QR Code</div>
+                            <div class="step-desc">Teller scans the slip's encrypted QR code with counter handheld scanner.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 03</div>
+                            <div class="step-title">Instant Auto-Populate</div>
+                            <div class="step-desc">Core Banking System (CBS) instantly auto-fills account, name &amp; denomination tables.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 04</div>
+                            <div class="step-title">Zero Typo Guarantee</div>
+                            <div class="step-desc">Eliminates manual teller typing errors and transposed bank digit mistakes.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 05</div>
+                            <div class="step-title">Verify Physical Cash</div>
+                            <div class="step-desc">Teller runs cash through note counter; counts match pre-printed breakdown.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 06</div>
+                            <div class="step-title">Signature Check</div>
+                            <div class="step-desc">Customer signs designated line on voucher; verified against CBS signature card.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 07</div>
+                            <div class="step-title">Commit Transaction</div>
+                            <div class="step-desc">Teller approves entry; CBS ledger updates balance in real-time.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 08</div>
+                            <div class="step-title">Counterfoil Stamping</div>
+                            <div class="step-desc">Teller stamps perforated customer acknowledgement slip and returns it.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 09</div>
+                            <div class="step-title">45s Turnaround</div>
+                            <div class="step-desc">Counter interaction completed in 45 seconds (85% reduction from 6+ minutes).</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 10</div>
+                            <div class="step-title">Audit Reconciliation</div>
+                            <div class="step-desc">End-of-day branch cash balance matches digital kiosk logs seamlessly.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feasibility & Growth Roadmap Section -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                    <!-- Risk Management -->
+                    <div style="background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 1.2rem;">
+                        <h4 style="color: #f59e0b; margin-bottom: 0.8rem; font-size: 1rem;"><i class="fas fa-shield-virus"></i> Reliability &amp; Safety Controls</h4>
+                        <ul style="list-style: none; padding: 0; font-size: 0.85rem; color: #cbd5e1; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong style="color: var(--light);">Illiterate Accessibility:</strong> Dual-mode voice assist and visual currency picture guides.</li>
+                            <li><strong style="color: var(--light);">Hardware Resilience:</strong> Jam-resistant industrial thermal head with paper-low optical telemetry.</li>
+                            <li><strong style="color: var(--light);">Data Privacy:</strong> Zero credential/PIN storage on kiosk; strictly generates transaction slips.</li>
+                            <li><strong style="color: var(--light);">Offline Operation:</strong> Cryptographic QR tokens function even during momentary bank intranet drops.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Growth Roadmap -->
+                    <div style="background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 1.2rem;">
+                        <h4 style="color: #6366f1; margin-bottom: 0.8rem; font-size: 1rem;"><i class="fas fa-chart-line"></i> Development Roadmap</h4>
+                        <div class="roadmap-grid">
+                            <div class="roadmap-card">
+                                <div class="roadmap-phase" style="color: #818cf8;">Phase 1</div>
+                                <div class="roadmap-title">Raspberry Pi &amp; Thermal Printer Prototype</div>
+                            </div>
+                            <div class="roadmap-card">
+                                <div class="roadmap-phase" style="color: #818cf8;">Phase 2</div>
+                                <div class="roadmap-title">Multilingual Speech &amp; Barcode Integration</div>
+                            </div>
+                            <div class="roadmap-card">
+                                <div class="roadmap-phase" style="color: #818cf8;">Phase 3</div>
+                                <div class="roadmap-title">Pilot Branch Lobby Testing &amp; UI Optimization</div>
+                            </div>
+                            <div class="roadmap-card">
+                                <div class="roadmap-phase" style="color: #818cf8;">Phase 4</div>
+                                <div class="roadmap-title">Bank CBS Finacle API &amp; QR Scanner Sync</div>
+                            </div>
+                            <div class="roadmap-card">
+                                <div class="roadmap-phase" style="color: #818cf8;">Phase 5</div>
+                                <div class="roadmap-title">Biometric Aadhaar Authentication &amp; Enclosure</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cert-modal-footer">
+                <span style="color: var(--gray); font-size: 0.85rem;">
+                    <i class="fas fa-check-circle" style="color: #818cf8;"></i> IoT Smart Banking Automation Project by Bhuvaneshwaran
+                </span>
+                <div style="display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap;">
+                    <a href="#contact" class="verify-btn" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);" onclick="closeChallanFlowModal()">
+                        <i class="fas fa-envelope"></i> Inquire About Project
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MyBusStand Flow & Architecture Modal -->
+    <div id="busFlowModal" class="flow-modal" onclick="closeBusFlowModalOnBackdrop(event)">
+        <div class="flow-modal-content">
+            <div class="flow-modal-header">
+                <h3>
+                    <i class="fas fa-bus-alt" style="color: #22d3ee;"></i>
+                    <span>MyBusStand — Overall Technical Flow &amp; Architecture</span>
+                </h3>
+                <button type="button" class="cert-modal-close" onclick="closeBusFlowModal()" title="Close">&times;</button>
+            </div>
+            <div class="flow-modal-body">
+                <!-- Project Summary Banner -->
+                <div style="background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3); border-radius: 12px; padding: 1.2rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                    <div>
+                        <div style="color: #22d3ee; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.2rem;">
+                            <i class="fas fa-bus"></i> FULL STACK TRANSIT MANAGEMENT (Django MVC &amp; MySQL)
+                        </div>
+                        <div style="color: var(--light); font-size: 0.9rem;">
+                            <strong>Problem Statement:</strong> Unannounced delays, outdated static schedule boards, passenger confusion, and overcrowding during peak transit hours.
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                        <span class="sih-badge" style="background: rgba(6, 182, 212, 0.15); border-color: rgba(6, 182, 212, 0.4); color: #22d3ee; font-size: 0.8rem;"><i class="fas fa-route"></i> Transit Platform</span>
+                        <span class="project-meta-pill"><i class="fas fa-database"></i> MySQL Relational DB</span>
+                    </div>
+                </div>
+
+                <!-- 1. Passenger Journey Workflow -->
+                <div class="workflow-track track-commuter">
+                    <div class="track-header">
+                        <i class="fas fa-walking"></i>
+                        <span>1. Commuter Discovery &amp; Travel Workflow (10 Steps)</span>
+                        <span style="font-size: 0.8rem; font-weight: 400; color: #bae6fd; margin-left: auto;">Passenger Experience</span>
+                    </div>
+                    <div class="workflow-steps-grid">
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 01</div>
+                            <div class="step-title">Access Portal</div>
+                            <div class="step-desc">Commuter launches responsive MyBusStand web portal on phone or kiosk.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 02</div>
+                            <div class="step-title">Origin &amp; Destination</div>
+                            <div class="step-desc">Enters boarding bus stand and target destination with smart auto-complete.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 03</div>
+                            <div class="step-title">Filter Preference</div>
+                            <div class="step-desc">Filters by time departure window, bus type (Ordinary, Express, Deluxe, AC).</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 04</div>
+                            <div class="step-title">View Bus Schedules</div>
+                            <div class="step-desc">Interactive timetable list displays departure time, platform bay number, and route code.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 05</div>
+                            <div class="step-title">Inspect Route Stops</div>
+                            <div class="step-desc">Clicks any bus to view complete sequence of intermediate stops &amp; arrival ETAs.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 06</div>
+                            <div class="step-title">Real-Time Status</div>
+                            <div class="step-desc">Checks live operational badges: 'On-Time', 'Delayed (+15m)', 'Boarding', or 'Departed'.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 07</div>
+                            <div class="step-title">Fare Calculation</div>
+                            <div class="step-desc">Automated fare matrix calculates accurate ticket price based on stage distance.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 08</div>
+                            <div class="step-title">Save Favorite Route</div>
+                            <div class="step-desc">Commuters bookmark regular office/college routes for 1-tap instant check.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 09</div>
+                            <div class="step-title">Platform Bay Guidance</div>
+                            <div class="step-desc">Navigates directly to the designated bus stand bay without inquiries.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 10</div>
+                            <div class="step-title">Punctual Boarding</div>
+                            <div class="step-desc">Boards the right bus on time with full itinerary clarity and confidence.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Platform Connector -->
+                <div class="flow-connector-bar">
+                    <span><i class="fas fa-arrows-alt-v"></i> Django REST API Endpoints &amp; Real-Time MySQL Schedule Sync</span>
+                </div>
+
+                <!-- 2. Platform Core Architecture -->
+                <div class="workflow-track track-bus-engine">
+                    <div class="track-header">
+                        <i class="fas fa-server"></i>
+                        <span>2. Platform Architecture &amp; Backend Engine (Central Core)</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem;">
+                        <div style="background: rgba(15, 23, 42, 0.7); padding: 1rem; border-radius: 10px; border: 1px solid rgba(168, 85, 247, 0.2);">
+                            <h4 style="color: #c084fc; font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fab fa-python"></i> Django MVC Engine</h4>
+                            <p style="font-size: 0.8rem; color: var(--gray); margin: 0;">Modular Model-View-Controller framework handling robust transit routing, views, and templating.</p>
+                        </div>
+                        <div style="background: rgba(15, 23, 42, 0.7); padding: 1rem; border-radius: 10px; border: 1px solid rgba(168, 85, 247, 0.2);">
+                            <h4 style="color: #c084fc; font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fas fa-database"></i> Relational MySQL Schema</h4>
+                            <p style="font-size: 0.8rem; color: var(--gray); margin: 0;">Normalized relational tables for Terminals, Corridors, Stages, Fleet Vehicles, and Timetables.</p>
+                        </div>
+                        <div style="background: rgba(15, 23, 42, 0.7); padding: 1rem; border-radius: 10px; border: 1px solid rgba(168, 85, 247, 0.2);">
+                            <h4 style="color: #c084fc; font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fas fa-calculator"></i> Dynamic Fare Matrix</h4>
+                            <p style="font-size: 0.8rem; color: var(--gray); margin: 0;">Automated tariff calculator taking into account stage mileage, bus class, and travel concessions.</p>
+                        </div>
+                        <div style="background: rgba(15, 23, 42, 0.7); padding: 1rem; border-radius: 10px; border: 1px solid rgba(168, 85, 247, 0.2);">
+                            <h4 style="color: #c084fc; font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fas fa-broadcast-tower"></i> REST API Dispatch Feed</h4>
+                            <p style="font-size: 0.8rem; color: var(--gray); margin: 0;">High-performance JSON endpoints driving live overhead terminal LED boards and commuter queries.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Platform Connector -->
+                <div class="flow-connector-bar">
+                    <span><i class="fas fa-arrows-alt-v"></i> Depot Controller Operations &amp; Live Trip Dispatch Console</span>
+                </div>
+
+                <!-- 3. Depot Controller & Fleet Management -->
+                <div class="workflow-track track-depot-ops">
+                    <div class="track-header">
+                        <i class="fas fa-user-shield"></i>
+                        <span>3. Depot Controller &amp; Fleet Operations (10 Steps)</span>
+                        <span style="font-size: 0.8rem; font-weight: 400; color: #fed7aa; margin-left: auto;">Administrative Journey</span>
+                    </div>
+                    <div class="workflow-steps-grid">
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 01</div>
+                            <div class="step-title">Admin Login</div>
+                            <div class="step-desc">Depot manager authenticates securely via Role-Based Access Control (RBAC).</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 02</div>
+                            <div class="step-title">Bus Fleet Registry</div>
+                            <div class="step-desc">Manages bus registrations, seating capacities, vehicle fitness &amp; service logs.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 03</div>
+                            <div class="step-title">Route Mapping</div>
+                            <div class="step-desc">Configures bus routes, intermediate staging stops, and scheduled travel runtimes.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 04</div>
+                            <div class="step-title">Timetable Matrix</div>
+                            <div class="step-desc">Programs recurring trip schedules for peak morning, regular, and night hours.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 05</div>
+                            <div class="step-title">Crew Assignment</div>
+                            <div class="step-desc">Assigns designated driver, conductor, and bus unit to scheduled service trips.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 06</div>
+                            <div class="step-title">Dispatch Logging</div>
+                            <div class="step-desc">Depot master clicks 'Departed Bay' to trigger real-time departure status updates.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 07</div>
+                            <div class="step-title">Broadcast Alerts</div>
+                            <div class="step-desc">Instantly broadcasts weather alerts, traffic diversions, or delay notifications.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 08</div>
+                            <div class="step-title">Sync LED Displays</div>
+                            <div class="step-desc">Automated sync pushes real-time bay departure feeds to bus stand overhead LED TVs.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 09</div>
+                            <div class="step-title">Demand Analytics</div>
+                            <div class="step-desc">Evaluates passenger search spikes to optimize bus frequency on crowded corridors.</div>
+                        </div>
+                        <div class="workflow-step-node">
+                            <div class="step-num">Step 10</div>
+                            <div class="step-title">Compliance Reports</div>
+                            <div class="step-desc">Generates monthly punctuality, fuel efficiency, and fleet utilization audit reports.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feasibility & Growth Roadmap Section -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                    <!-- Risk Management -->
+                    <div style="background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 1.2rem;">
+                        <h4 style="color: #f59e0b; margin-bottom: 0.8rem; font-size: 1rem;"><i class="fas fa-shield-virus"></i> Reliability &amp; Scalability Controls</h4>
+                        <ul style="list-style: none; padding: 0; font-size: 0.85rem; color: #cbd5e1; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><strong style="color: var(--light);">Multi-Depot Sync:</strong> Centralized database prevents conflicting platform bay assignments.</li>
+                            <li><strong style="color: var(--light);">Peak Load Caching:</strong> In-memory route query caching absorbs peak rush hour spikes.</li>
+                            <li><strong style="color: var(--light);">Lightweight Mobile Footprint:</strong> Zero-bloat frontend loads instantaneously even on 3G rural networks.</li>
+                            <li><strong style="color: var(--light);">ACID DB Transactions:</strong> Foreign key constraints guarantee flawless scheduling integrity.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Growth Roadmap -->
+                    <div style="background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 1.2rem;">
+                        <h4 style="color: #06b6d4; margin-bottom: 0.8rem; font-size: 1rem;"><i class="fas fa-chart-line"></i> Development Roadmap</h4>
+                        <div class="roadmap-grid">
+                            <div class="roadmap-card">
+                                <div class="roadmap-phase" style="color: #22d3ee;">Phase 1</div>
+                                <div class="roadmap-title">Corridor Database &amp; Commuter Search Engine</div>
+                            </div>
+                            <div class="roadmap-card">
+                                <div class="roadmap-phase" style="color: #22d3ee;">Phase 2</div>
+                                <div class="roadmap-title">Depot Master Dispatch Console &amp; Fare Engine</div>
+                            </div>
+                            <div class="roadmap-card">
+                                <div class="roadmap-phase" style="color: #22d3ee;">Phase 3</div>
+                                <div class="roadmap-title">Bus Stand Concourse LED TV Display Feeds</div>
+                            </div>
+                            <div class="roadmap-card">
+                                <div class="roadmap-phase" style="color: #22d3ee;">Phase 4</div>
+                                <div class="roadmap-title">GPS Bus Tracking &amp; Live Distance Telemetry</div>
+                            </div>
+                            <div class="roadmap-card">
+                                <div class="roadmap-phase" style="color: #22d3ee;">Phase 5</div>
+                                <div class="roadmap-title">Digital QR Ticketing &amp; Transit Pass Renewal</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cert-modal-footer">
+                <span style="color: var(--gray); font-size: 0.85rem;">
+                    <i class="fas fa-check-circle" style="color: #22d3ee;"></i> Full-Stack Public Transit System by Bhuvaneshwaran
+                </span>
+                <div style="display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap;">
+                    <a href="#contact" class="verify-btn" style="background: linear-gradient(135deg, #06b6d4, #0284c7);" onclick="closeBusFlowModal()">
+                        <i class="fas fa-envelope"></i> Inquire About Project
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
